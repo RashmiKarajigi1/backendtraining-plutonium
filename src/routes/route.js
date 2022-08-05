@@ -1,11 +1,24 @@
 const express = require('express');
 const abc = require('../introduction/intro')
+const exportModule = require('../logger/logger')
+const helpe = require('../util/helper')
+const format = require('../validator/formatter')
 const router = express.Router();
 
-router.get('/test-me', function (req, res) {
-    console.log('My batch is', abc.name)
-    abc.printName()
-    res.send('My second ever api!')
+// router.get('/test-me', function (req, res) {
+//     console.log('My batch is', abc.name)
+//     abc.printName()
+//     res.send('My second ever api!')
+// });
+router.get('/test-me',function(req,res){
+    exportModule.welcome()
+    helpe.printDate()
+    helpe.printMonth()
+    helpe.getBatchInfo()
+    format.trim()
+    format.changetoLowerCase()
+    format.changeToUpperCase()
+    res.send('3rd API')
 });
 
 
