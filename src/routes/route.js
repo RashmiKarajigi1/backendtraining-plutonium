@@ -70,4 +70,86 @@ router.post("/test-post-4", function(req, res) {
     res.send(  { msg: arr , status: true }  )
 })
 
+
+
+
+let players = [{
+    "name": "manish",
+    "dob": "1/1/1995",
+    "gender": "male",
+    "city": "jalandhar",
+    "sports": [
+        "swimming"
+    ]
+},
+{
+    "name": "tarun",
+    "dob": "16/4/1998",
+    "gender": "male",
+    "city": "delhi",
+    "sports": [
+        "cricket"
+    ]
+},
+{
+    "name": "ram",
+    "dob": "13/9/1994",
+    "gender": "male",
+    "city": "noida",
+    "sports": [
+        "football"
+    ]
+},
+{
+    "name": "shyam",
+    "dob": "23/7/1997",
+    "gender": "male",
+    "city": "punjab",
+    "sports": [
+        "baseball"
+    ]
+}]
+router.post("/players", function(req, res){
+
+    let ele= req.body
+    let flag = false
+    for(i=0;i<players.length;i++){
+        if(ele.name === players[i].name){
+            flag = true
+            break;
+        }
+    }
+    if(flag){
+        res.send({msg : "Name already exist"})
+    }else{
+    players.push(ele)
+      res.send({data : players , status : true})
+    }
+})
+// router.post("/players", function (req, res) {
+
+//     let ele = req.body
+
+//     for (i = 0; i < players.length; i++) {
+//         if (ele.name === players[i].name) {
+
+//             res.send({ msg: "Name already exist" })
+//             break;
+//         } 
+//       }
+//       if(ele.name!==players[i].name)  {
+//          players.push(ele)
+//          res.send({ data: players, status: true })
+//       }
+        
+
+// })
+
+
+
+
+
+
+
 module.exports = router;
+// adding this comment for no reason
